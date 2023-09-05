@@ -7,11 +7,11 @@ http.createServer((request, response) => {
 
   // Route requests based on the URL path
   if (urlPath === '/homer') {
-    readFileSendResponse('homer.html', 'text/html', response);
+    readFileSendResponse('./homer.html', 'text/html', response);
   } else if (urlPath === '/bradbury') {
-    readFileSendResponse('bradbury.html', 'text/html', response);
+    readFileSendResponse('./bradbury.html', 'text/html', response);
   } else if (urlPath === '/') {
-    readFileSendResponse('index.html', 'text/html', response);
+    readFileSendResponse('./index.html', 'text/html', response);
   } else {
     // For any other paths, respond with a 404 status
     response.writeHead(404, { 'Content-Type': 'text/plain' });
