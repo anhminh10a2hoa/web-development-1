@@ -15,7 +15,7 @@ http.createServer((request, response) => {
   } else {
     // For any other paths, respond with a 404 status
     response.writeHead(404, { 'Content-Type': 'text/plain' });
-    response.write('Requested content not found');
+    response.write('Not Found');
     response.end();
   }
 }).listen(3000);
