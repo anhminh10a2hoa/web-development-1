@@ -14,9 +14,9 @@ http.createServer(function (request, response) {
   if (acceptHeader === '*/*') {
     // You can use the readFileSendResponse(fileName, contentType, response) function 
     // to read a file and send the response or write your own. It's up to you. :-)
-    readFileSendResponse('application/json', 'data.json', response)
+    readFileSendResponse('data.json', 'application/json', response)
   } else if(mimeTypes.hasOwnProperty(acceptHeader)) {
-    readFileSendResponse(acceptHeader, mimeTypes[acceptHeader], response)
+    readFileSendResponse(mimeTypes[acceptHeader], acceptHeader, response)
   } else {
     response.statusCode = 406;
     response.statusMessage = 'Content type not available';
