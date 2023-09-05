@@ -5,9 +5,18 @@ const path = require('path');
 http.createServer(function (request, response) {
 
   //TODO: implement sending responds to requests for XML, TXT, JSON, and */* handling JSON provided as an example.
-  if (request.headers['accept'].includes('application/json')) {
+  const mimeTypes = {
+    'text/plain': 'data.txt',
+    'application/xml': 'data.xml',
+    'application/json': 'data.json',
+  };
+  const acceptHeader = request.headers['accept'];
+  if (acceptHeader === '*/*') {
     // You can use the readFileSendResponse(fileName, contentType, response) function 
     // to read a file and send the response or write your own. It's up to you. :-)
+    readFileSendResponse('application/json', 'data.json', response)
+  } else if(mimeTypes.hasOwnProperty(acceptHeader)) {
+    readFileSendResponse(acceptHeader, mimeTypes[acceptHeader], response)
   } else {
     response.statusCode = 406;
     response.statusMessage = 'Content type not available';
