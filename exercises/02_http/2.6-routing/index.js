@@ -14,8 +14,8 @@ http.createServer((request, response) => {
     readFileSendResponse('index.html', 'text/html', response);
   } else {
     // For any other paths, respond with a 404 status
-    response.writeHead(404, { 'Content-Type': 'text/plain' });
-    response.write('Requested content not found');
+    response.statusCode = 404
+    response.statusMessage = 'Requested content not found'
     response.end();
   }
 }).listen(3000);
@@ -23,8 +23,8 @@ http.createServer((request, response) => {
 const readFileSendResponse = (fileName, contentType, response) => {
   fs.readFile(fileName, (err, data) => {
     if (err) {
-      response.writeHead(404, { 'Content-Type': 'text/plain' });
-      response.write('Not found');
+      response.statusCode = 404
+      response.statusMessage = 'Not found'
     } else {
       response.writeHead(200, { 'Content-Type': contentType });
       response.write(data);
