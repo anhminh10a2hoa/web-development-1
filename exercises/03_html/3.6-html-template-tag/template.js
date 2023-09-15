@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Get references to DOM elements
+  // Get references to the DOM elements
   const form = document.getElementById('form');
   const contactsContainer = document.getElementById('contacts');
   const contactTemplate = document.getElementById('contact-template');
@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const newContact = contactTemplate.content.cloneNode(true);
 
     // Update the cloned contact with form data
-    const contactName = newContact.querySelector('.name');
+    const contactName = newContact.querySelector('h2');
     const contactEmail = newContact.querySelector('.email');
-    const contactHomepage = newContact.querySelector('.homepage');
+    const contactHomepage = newContact.querySelector('.homepage a');
 
     contactName.textContent = formData.get('name');
     contactEmail.textContent = formData.get('email');
-    contactHomepage.querySelector('a').href = formData.get('homepage');
-    contactHomepage.querySelector('a').textContent = formData.get('homepage');
+    contactHomepage.href = formData.get('homepage');
+    contactHomepage.textContent = formData.get('homepage');
 
     // Append the new contact to the contacts container
     contactsContainer.appendChild(newContact);
