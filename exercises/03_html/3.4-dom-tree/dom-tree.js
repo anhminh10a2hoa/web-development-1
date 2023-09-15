@@ -1,5 +1,6 @@
 // Add a class to the existing navigation link list (ul inside nav)
 const navList = document.querySelector('nav ul');
+navList.classList.add('list'); 
 navList.classList.add('link-list');
 
 // Create a new link and insert it as the last item inside the navigation link list
