@@ -28,5 +28,5 @@ resetButton.addEventListener('click', () => {
 
 // Function to update the counter text in the paragraph
 function updateCounterText() {
-  counterParagraph.textContent = `Counter: ${counterValue}`;
+  counterParagraph.textContent = counterValue;
 }
