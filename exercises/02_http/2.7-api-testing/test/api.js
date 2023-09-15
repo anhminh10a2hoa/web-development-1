@@ -49,7 +49,7 @@ describe('Going through the routes', () => {
   });
 
   /*
-   * Test the /classical route, should receive homer.html
+   * Test the /homer route, should receive homer.html
    */
   describe('GET /homer path', () => {
     // TODO modify the it statement to use the function that has been 
@@ -78,7 +78,7 @@ describe('Going through the routes', () => {
   });
 
   /*
-   * Test the /dystopy route, should receive bradbury.html
+   * Test the /bradbury route, should receive bradbury.html
    */
   describe('GET /bradbury path', () => {
     // TODO modify the it statement to use the function that has been 
