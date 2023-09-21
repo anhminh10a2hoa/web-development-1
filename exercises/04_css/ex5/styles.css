@@ -18,23 +18,31 @@ header {
   display: grid;
   width: 100%;
   min-height: 15%;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Adjust column size here */
-  gap: 10px; /* Optional gap between columns */
+  /* TODO: needed grid stuff */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
-main {
+section {
+  min-height: 200px;
+}
+
+aside {
+  min-height: 200px;
+}
+
+article {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Adjust column size here */
-  gap: 10px; /* Optional gap between columns */
   font-size: 1.5em;
+  /* TODO: needed grid stuff */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
 footer {
   display: grid;
   width: 100%;
   min-height: 15%;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Adjust column size here */
-  gap: 10px; /* Optional gap between columns */
+  /* TODO: needed grid stuff */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
 nav {
@@ -44,23 +52,6 @@ nav {
 
 header nav {
   width: 100%;
-}
-
-section {
-  min-height: 200px;
-  background-color: lavender;
-}
-
-aside {
-  min-height: 200px;
-  background-color: cornflowerblue;
-}
-
-article {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Adjust column size here */
-  gap: 10px; /* Optional gap between columns */
-  font-size: 1.5em;
 }
 
 #sec1 {

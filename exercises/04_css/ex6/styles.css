@@ -1,0 +1,54 @@
+/* Default styles for small screens */
+body {
+  grid-template-columns: 1fr;
+}
+
+article {
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "sec1 sec2"
+    "sec3 sec3"
+    "aside1 aside2";
+}
+
+footer {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Media query for screens larger than phone but smaller than tablet */
+@media screen and (min-width: 480px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+
+  article {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "sec1 sec2"
+      "sec3 aside1"
+      "sec3 aside2";
+  }
+
+  footer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Media query for screens larger than tablet */
+@media screen and (min-width: 768px) {
+  body {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  article {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "sec1 sec2 sec3"
+      "aside1 aside2 ."
+      ". . .";
+  }
+
+  footer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
