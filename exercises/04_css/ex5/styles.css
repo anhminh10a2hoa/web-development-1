@@ -19,6 +19,7 @@ header {
   width: 100%;
   min-height: 15%;
   /* TODO: needed grid stuff */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
 section {
