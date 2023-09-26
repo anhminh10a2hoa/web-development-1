@@ -33,10 +33,6 @@ article {
   border: solid;
   margin: 0;
   display: grid;
-  grid-template-areas:
-    "sec1 aside1"
-    "sec2 aside2"
-    "sec3 sec3";
   height: 100%;
 }
 
@@ -88,43 +84,52 @@ footer {
   grid-area: nav2;
 }
 
-/* Media query for Small Phone (< 600px) */
+/* Small phone */
 @media (max-width: 599px) {
   article {
     grid-template-areas:
-      "s1"
-      "s2"
-      "s3"
-      "a1"
-      "a2"
-      "n1"
-      "n2";
+      "sec1"
+      "sec2"
+      "sec3"
+      "aside1"
+      "aside2"
+      "nav1"
+      "nav2";
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(7, min-content);
   }
 }
 
-/* Media query for Phone (600px - 767px) and Tablet (768px - 991px) */
+/* Phone and tablet */
 @media (min-width: 600px) and (max-width: 991px) {
   article {
     grid-template-areas:
-      "s1 s2"
-      "s3 a1"
-      "a2 n1"
-      "n2 .";
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, min-content);
+      "sec1 aside1"
+      "sec2 aside2"
+      "sec3 sec3"
+      "nav1 nav1"
+      "nav2 nav2";
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-/* Media query for Desktop (992px - 1199px) and Wide Desktop (>= 1200px) */
-@media (min-width: 992px) {
+/* Desktop */
+@media (min-width: 992px) and (max-width: 1199px) {
   article {
     grid-template-areas:
-      "s1 s2 s3"
-      "a1 a2 ."
-      "n1 n2 .";
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, min-content);
+      "sec1 sec2 sec3"
+      "aside1 aside2 ."
+      "nav1 nav2 .";
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Wide desktop */
+@media (min-width: 1200px) {
+  article {
+    grid-template-areas:
+      "sec1 sec2 sec3"
+      "aside1 aside2 ."
+      "nav1 nav2 .";
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
