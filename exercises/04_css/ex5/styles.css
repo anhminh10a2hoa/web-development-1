@@ -35,8 +35,9 @@ article {
   font-size: 1.5em;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* modified */
   grid-template-areas: /* modified */
-    "sec1 sec2 sec3"
-    "aside1 aside2 aside2";
+  "sec1 sec1 sec1"
+  "sec2 sec3 aside1"
+  "sec2 sec3 aside2";
 }
 
 footer {
