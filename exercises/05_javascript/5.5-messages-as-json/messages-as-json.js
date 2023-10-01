@@ -1,47 +1,43 @@
 const userCardTemplate = document.getElementById("user-card-template");
 const contactsDiv = document.getElementById("contacts");
 
-document.addEventListener('userDataReady', data_received);
+// Use a named function instead of an anonymous function
+function updateUserCard(user) {
+  const clone = userCardTemplate.content.cloneNode(true);
 
-function data_received(event) {
+  const tempName = clone.querySelector("h1");
+  tempName.textContent = `${user.firstName} ${user.lastName}`;
 
-    event.preventDefault();
+  const tempEmail = clone.querySelector(".title.email");
+  tempEmail.textContent = user.email;
 
-    //json data parsed to array
-    var arr = JSON.parse(event.detail.jsonText);
+  const tempPhone = clone.querySelector(".phone > span");
+  tempPhone.textContent = user.phoneNumber;
 
-    var clone, tempName, tempEmail, tempPhone, tempAddress, tempHomePage, tempAvatar, objectArray;
-    for (var i = 0; i < arr.length; i++) {
+  const tempAddress = clone.querySelectorAll(".address > p");
+  tempAddress[0].textContent = user.address.streetAddress;
+  tempAddress[1].textContent = `${user.address.zipCode} ${user.address.city}`;
+  tempAddress[2].textContent = user.address.country;
 
-        objectArray = arr[i];
+  const tempHomePage = clone.querySelector(".homepage > a");
+  tempHomePage.textContent = user.homepage;
+  tempHomePage.href = user.homepage;
 
-        clone = userCardTemplate.content.cloneNode(true);
+  const tempAvatar = clone.querySelector("img");
+  tempAvatar.src = user.avatar;
+  tempAvatar.alt = `${user.firstName} ${user.lastName}`;
 
-        //replace contents
-        tempName = clone.querySelector("h1");
-        tempName.textContent = objectArray.firstName + " " + objectArray.lastName;
-
-        tempEmail = clone.querySelector(".title.email");
-        tempEmail.textContent = objectArray.email;
-
-        tempPhone = clone.querySelector(".phone > span");
-        tempPhone.textContent = objectArray.phoneNumber;
-
-        tempAddress = clone.querySelectorAll(".address > p");
-        tempAddress[0].textContent = objectArray.address.streetAddress;
-        tempAddress[1].textContent = 
-        objectArray.address.zipCode + " " + objectArray.address.city;
-        tempAddress[2].textContent = objectArray.address.country;
-
-        tempHomePage = clone.querySelector(".homepage > a");
-        tempHomePage.textContent = objectArray.homepage;
-        tempHomePage.href = objectArray.homepage; 
-
-        tempAvatar = clone.querySelector("img");
-        tempAvatar.src = objectArray.avatar;
-        tempAvatar.alt = objectArray.firstName + " " + objectArray.lastName;
-
-        contactsDiv.appendChild(clone);
-    }
+  contactsDiv.appendChild(clone);
 }
-fetchUserData();
+
+function dataReceived(event) {
+  event.preventDefault();
+  const arr = JSON.parse(event.detail.jsonText);
+
+  for (const user of arr) {
+    updateUserCard(user);
+  }
+}
+
+document.addEventListener('userDataReady', dataReceived);
+fetchUserData(); // Make sure fetchUserData() is defined somewhere in your code
