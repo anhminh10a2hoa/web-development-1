@@ -40,4 +40,4 @@ function dataReceived(event) {
 }
 
 document.addEventListener('userDataReady', dataReceived);
-fetchUserData(); // Make sure fetchUserData() is defined somewhere in your code
+fetchUserData(); 

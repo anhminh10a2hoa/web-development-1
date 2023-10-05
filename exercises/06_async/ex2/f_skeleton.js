@@ -1,55 +1,73 @@
-// TODO: Install testing packages with npm install
-
 /**
- * TODO: implement an *async* function 'f' that returns the value of a parameter inside a Promise
- * @param {number} value, must be a number, isNaN() is useful here
- * @throws an error, if the parameter 'value' is not a number. The thrown error message must
- * be 'Parameter is not a number!'
- * @returns a new Promise, which resolves to the parameter value
+ * Implement an async function 'f' that returns the value of a parameter inside a Promise.
+ * @param {number} value - Must be a number.
+ * @throws an error if the parameter 'value' is not a number. The thrown error message must be 'Parameter is not a number!'.
+ * @returns a new Promise that resolves to the parameter value.
  */
 const f = (value) => {
-  throw "Not yet implemented!";
+  return new Promise((resolve, reject) => {
+    if (typeof value !== 'number' || isNaN(value)) {
+      reject("Parameter is not a number!");
+    } else {
+      resolve(value);
+    }
+  });
 }
 
 /**
- * TODO: Implement an async function 'g' that calls the previously made async function 'f'.
- * With then() function g waits for the result of f and returns the natural logarithm (Math.log()) of f's value.
+ * Implement an async function 'g' that calls the previously made async function 'f'.
+ * Use `await` to wait for the result of 'f' and return the natural logarithm (Math.log()) of 'f's value.
  * Handle exceptions gracefully by returning the thrown error message with catch().
  * @param {number} value
  */
-const g = (value) => {
-  throw "Not yet implemented!";
+const g = async (value) => {
+  try {
+    const result = await f(value);
+    return Math.log(result);
+  } catch (error) {
+    return error;
+  }
 }
 
 /**
- * TODO: Implement an async function 'checkIfFunction'.
- * The function checks the type of a parameter. typeof is useful here.
- * However, since we are now practicing
- * Promises, the value is returned as a "promisified" value
- * @param {*} param the value is checked to be a function
- * @returns resolved Promise with value true if parameter is a function or 
- * a rejected Promise with message "Not a function!" otherwise
+ * Implement an async function 'checkIfFunction' that checks the type of a parameter.
+ * Use `typeof` to check if the value is a function.
+ * @param {*} param - The value to be checked for being a function.
+ * @returns a resolved Promise with value `true` if the parameter is a function or a rejected Promise with message "Not a function!" otherwise.
  */
 const checkIfFunction = (param) => {
-  throw "Not yet implemented!";
+  return new Promise((resolve, reject) => {
+    if (typeof param === 'function') {
+      resolve(true);
+    } else {
+      reject("Not a function!");
+    }
+  });
 }
 
 /**
- * TODO: Implement a function 'p' that returns a resolved Promise after a given time.
- * If time > 2000 milliseconds, the Promise must be rejected with message "Too long time!".
- * If time is not a number the Promise must be rejected with message "Not a number!".
+ * Implement a function 'p' that returns a resolved Promise after a given time.
+ * If time > 2000 milliseconds, the Promise must be rejected with the message "Too long time!".
+ * If time is not a number, the Promise must be rejected with the message "Not a number!".
  * @param {number} time
- * @returns {an empty Promise after a given time}, if time is acceptable
+ * @returns {Promise} - Resolved or rejected Promise based on the conditions.
  */
 const p = (time) => {
-  throw "Not yet implemented!";
+  return new Promise((resolve, reject) => {
+    if (typeof time !== 'number' || isNaN(time)) {
+      reject("Not a number!");
+    } else if (time > 2000) {
+      reject("Too long time!");
+    } else {
+      setTimeout(() => {
+        resolve();
+      }, time);
+    }
+  });
 };
 
-//TODO: verify that all functions exported below are available for tests (they should be)
+// Export the functions for testing
 exports.f = f;
 exports.g = g;
 exports.checkIfFunction = checkIfFunction;
 exports.p = p;
-
-
-// TODO: Run the tests with npm test
