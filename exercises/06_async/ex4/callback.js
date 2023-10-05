@@ -13,7 +13,14 @@
  * It draws only one arrow, the f expression must be 'drawArrow'
  * @param {*} i the index, the nth arrow to be drawn, note that the sequence has to return from destination back to the source
  */
-const drawArrows = (actors, timeout, drawArrow, i = 0) => {}
+const drawArrows = (actors, timeout, drawArrow, i = 0) => {
+  if(i === actors.length * 2 -2) {
+    return;
+  } else {
+      drawArrow(i, timeout, actors.length-1); //draw one arrow
+      setTimeout( () => drawArrows(actors, timeout, drawArrow, i+1), timeout);
+  }
+}
 
 
 
