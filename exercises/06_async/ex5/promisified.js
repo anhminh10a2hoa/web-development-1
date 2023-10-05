@@ -20,6 +20,14 @@ async function drawArrows(actors, timeout, drawArrow, i = 0) {
   // this callback calls drawArrows() with the right parameters, after the set timeout period.
 
   //   return i < actors.length * 2 - 2 ? new Promise() : null;
+  if(i === actors.length * 2 - 2) {
+    return;
+  } else {
+    const prom = new Promise(function(resolve, reject) {
+      drawArrow(i, timeout, actors.length - 1);
+      setTimeout( () => resolve(drawArrows(actors, timeout, drawArrow, i + 1)), timeout);
+    });
+  }
 };
 
 
