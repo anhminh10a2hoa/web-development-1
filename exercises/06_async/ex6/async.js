@@ -10,11 +10,19 @@
  * @param {*} drawArrow the callback to draw one single array
  * @param {*} i the index of the arrow
  */
-function drawArrows(actors, timeout, drawArrow, i = 0) {
-
+async function drawArrows(actors, timeout, drawArrow, i = 0) {
+    while(i < actors.length*2-2) {
+        await drawOneArror(i, timeout, actors.length-1, drawArrow);
+        ++i;
+    };
 };
 
-
+function drawOneArror(i, timeout, length, drawArrow) {
+    drawArrow(i, timeout, length);
+    return new Promise(resolve => {
+        setTimeout(() => resolve(), timeout); 
+    });
+};
 
 
 /**
