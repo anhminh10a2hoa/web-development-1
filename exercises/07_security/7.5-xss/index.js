@@ -1,7 +1,6 @@
 const http = require('http');
 const url = require('url');
 
-
 http.createServer((request, response) => {
   request.on('error', (err) => {
     console.error(err);
@@ -13,22 +12,25 @@ http.createServer((request, response) => {
   });
 
   const queryObject = url.parse(request.url, true).query;
+  
+  // Sanitize the 'addThisText' query parameter using encodeURIComponent()
+  const sanitizedAddThisText = encodeURIComponent(queryObject['addThisText']);
 
-  // TODO: sanitize the the 'addThisText' query parameter user input so that injected scripts won't run
-  // addThisText from the query parameters is accessed with queryObject['addThisText']. It should be sanitized with encodeURIComponent().
   response.write(
-    `   <!doctype html>
-            <html lang="en">
-            <head>
-                <meta charset="utf-8">
-                <title>XSS alert!</title>
-            </head>
-            <body>
-                <p id="xss">Here be XSS!  queryObject['addThisText'] is now: </p>
-                ${queryObject['addThisText']}
-            </body >
-            </html >
-    `);
+    `<!doctype html>
+      <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>XSS alert!</title>
+      </head>
+      <body>
+        <p id="xss">Here be XSS! queryObject['addThisText'] is now: </p>
+        ${sanitizedAddThisText}
+      </body>
+      </html>
+    `
+  );
+
   console.log("queryObject['addThisText']: ", queryObject['addThisText']);
   response.end();
 }).listen(3000);
