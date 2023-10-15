@@ -61,7 +61,7 @@ http.createServer((req, res) => {
 
   // Handle HTTP methods that are not allowed
   res.writeHead(405, headers);
-  res.end('Request used an HTTP method which is not allowed');
+  res.end('Request used an HTTP method which is not allowed.');
 
   // TODO: check that Origin header is set in all incoming requests
   // You can access the header with req.headers['origin']
