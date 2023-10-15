@@ -17,7 +17,9 @@ http.createServer((req, res) => {
       This syntax enables using the defined CORS headers with  writeHead() method in the TODOs below. See writeHead() method parameters: (https://nodejs.org/api/http.html#http_response_writehead_statuscode_statusmessage_headers).
   */
   const headers = {
-
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, HEAD',
+    'Access-Control-Max-Age': '14400', 
   };
 
   let filePath = path.join(__dirname, 'index.html');
